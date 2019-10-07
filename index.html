@@ -5,7 +5,28 @@
     </head>
     <body>
         <h1>Acme Pixels</h1>
-        <div id='grid'></div>
+        <div id='main-container'>
+            <div id='controls'>
+                <h2>Controls</h2>
+                <div id='button-container'>
+                    <button id='add-a-row'>Add a Row</button>
+                    <button id='remove-row'>Remove Row</button>
+                    <button id='add-a-column'>Add a Column</button>
+                    <button id='remove-column'>Remove Column</button>
+                </div>
+                <div id='swatches'>
+                    <div class='red swatch'></div>
+                    <div class='indigo swatch'></div>
+                    <div class='green swatch'></div>
+                    <div class='yellow swatch'></div>
+                    <div class='teal swatch'></div>
+                </div>
+            </div>
+            <div id='canvas'>
+                <h2>Canvas</h2>
+                <div id='grid'></div>
+            </div>
+        </div>
         <script>
 
             const body = document.querySelector('body');
