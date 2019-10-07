@@ -1,0 +1,16 @@
+h1 {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#grid {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#grid > div > div {
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid black;
+}

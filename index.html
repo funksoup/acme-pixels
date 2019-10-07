@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Acme Pixels</title>
+        <link rel='stylesheet' href='styles.css'>
+    </head>
+    <body>
+        <h1>Acme Pixels</h1>
+        <div id='grid'></div>
+        <script>
+
+            const body = document.querySelector('body');
+
+            const generateNxN = n => {
+                let grid = [];
+                for(let i = n; i > 0; i--) {
+                    let innerGrid = [];
+                    for(let j = n; j > 0; j--){
+                        let cell = Math.ceil(Math.random() * 4);
+                        if(cell == 1) innerGrid.push('red')
+                        if(cell == 2) innerGrid.push('blue')
+                        if(cell == 3) innerGrid.push('green')
+                        if(cell == 4) innerGrid.push('')
+                    }
+                    grid.push(innerGrid);
+                }
+                return grid;
+            }
+
+            const generateHTMLGrid = (arr) => {
+                const html = arr.map(row => {
+                    return `
+                    <div class='row'>
+                        ${row.map(cell => {
+                            return `
+                            <div ${cell !== '' ? `style=background-color:${cell};` : ''}></div>
+                    `}).join('')}
+                    </div>
+                `}).join('')
+                grid.innerHTML = html;
+            }
+            const meow = generateNxN(5)
+            generateHTMLGrid(meow);
+
+        </script>
+    </body>
+</html>
