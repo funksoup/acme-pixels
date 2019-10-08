@@ -2,6 +2,7 @@
     <head>
         <title>Acme Pixels</title>
         <link rel='stylesheet' href='styles.css'>
+        <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
     </head>
     <body>
         <h1>Acme Pixels</h1>
@@ -100,7 +101,11 @@
 
             const boxColorChange = grid.addEventListener('click', ev => {
 
-                ev.target.style.backgroundColor = activeColor.color;
+                if (ev.target.style.backgroundColor == activeColor.color) {
+                    ev.target.style.backgroundColor = 'transparent';
+                } else { 
+                    ev.target.style.backgroundColor = activeColor.color;
+                }
                 // generateHTMLGrid();
             })
 
