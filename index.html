@@ -29,18 +29,54 @@
         </div>
         <script>
 
+            const buttonContainer = document.querySelector('#button-container');
+            const colorSwatches = document.querySelector('#swatches');
             const body = document.querySelector('body');
+            const parameter = {
+                x: 5,
+                y: 5
+            };
 
-            const generateNxN = n => {
+            const grid = document.querySelector('#grid');
+
+            const activeColor = {
+                color: ''
+            }
+
+            const colorSelect = colorSwatches.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                activeColor.color = ev.target.classList[0];
+                console.log(activeColor.color);
+            })
+
+            const buttonAdd = buttonContainer.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                if (ev.target.id == 'add-a-row') {
+                    parameter.y ++;
+                } else if (ev.target.id == 'remove-row') {
+                    parameter.y --;
+                } else if (ev.target.id == 'add-a-column') {
+                    parameter.x ++;
+                } else if (ev.target.id == 'remove-column') {
+                    parameter.x --;
+                } 
+
+            const renderSwatch = generateNxN(parameter.x, parameter.y);
+                generateHTMLGrid(renderSwatch);
+            })
+
+
+            const generateNxN = (x,y) => {
                 let grid = [];
-                for(let i = n; i > 0; i--) {
+                for(let i = x; i > 0; i--) {
                     let innerGrid = [];
-                    for(let j = n; j > 0; j--){
-                        let cell = Math.ceil(Math.random() * 4);
-                        if(cell == 1) innerGrid.push('red')
-                        if(cell == 2) innerGrid.push('blue')
-                        if(cell == 3) innerGrid.push('green')
-                        if(cell == 4) innerGrid.push('')
+                    for(let j = y; j > 0; j--){
+                        innerGrid.push('');
+                    //     let cell = Math.ceil(Math.random() * 4);
+                    //     if(cell == 1) innerGrid.push('red')
+                    //     if(cell == 2) innerGrid.push('blue')
+                    //     if(cell == 3) innerGrid.push('green')
+                    //     if(cell == 4) innerGrid.push('')
                     }
                     grid.push(innerGrid);
                 }
@@ -59,8 +95,15 @@
                 `}).join('')
                 grid.innerHTML = html;
             }
-            const meow = generateNxN(5)
+            const meow = generateNxN(parameter.x, parameter.y);
             generateHTMLGrid(meow);
+
+            const boxColorChange = grid.addEventListener('click', ev => {
+
+                ev.target.style.backgroundColor = activeColor.color;
+                // generateHTMLGrid();
+            })
+
 
         </script>
     </body>
